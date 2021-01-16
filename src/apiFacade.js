@@ -57,11 +57,17 @@ function apiFacade() {
     return fetch(URL + "/api/info/" + role, options).then(handleHttpErrors);
   };
 
-  const fetchStarwars = () => {
+  const fetchHotels = () => {
     const options = makeOptions("GET");
 
-    return fetch(URL + "/api/info/parrallel/", options).then(handleHttpErrors);
+    return fetch(URL + "/api/users/hotels", options).then(handleHttpErrors);
   };
+
+  const fetchHotel = (id) => {
+    const options = makeOptions("GET");
+    return fetch(URL + "/api/users/hotel/" + id, options).then(handleHttpErrors);
+  };
+
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -78,7 +84,10 @@ function apiFacade() {
     }
     return opts;
   };
+
   return {
+    fetchHotel,
+    fetchHotels,
     makeOptions,
     setToken,
     getToken,
@@ -86,7 +95,6 @@ function apiFacade() {
     login,
     logout,
     fetchData,
-    fetchStarwars,
     getRole
   };
 }

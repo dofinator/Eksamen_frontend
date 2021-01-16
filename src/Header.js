@@ -6,8 +6,8 @@ function Header(props) {
     <div>
       <ul className="header">
         <li>
-          <NavLink exact activeClassName="active" to="/">
-            Home
+          <NavLink exact activeClassName="active" to="/hotels">
+            Hotels
           </NavLink>
         </li>
         <li>
@@ -21,8 +21,8 @@ function Header(props) {
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/starwars">
-            Starwars
+          <NavLink activeClassName="active" to="/login">
+            Login/register
           </NavLink>
         </li>
       </ul>
