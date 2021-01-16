@@ -5,6 +5,11 @@ function Header(props) {
   return (
     <div>
       <ul className="header">
+      <li>
+          <NavLink activeClassName="active" to="/">
+            Home
+          </NavLink>
+        </li>
         <li>
           <NavLink exact activeClassName="active" to="/hotels">
             Hotels
@@ -18,11 +23,6 @@ function Header(props) {
         <li>
           <NavLink activeClassName="active" to="/admin">
             Admin
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeClassName="active" to="/login">
-            Login/register
           </NavLink>
         </li>
       </ul>

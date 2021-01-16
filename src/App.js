@@ -4,7 +4,7 @@ import LogIn, { LoggedIn } from "./LogIn.js";
 import Header from "./Header.js";
 import Admin from "./Admin.js";
 import User from "./User.js";
-import AllHotels from "./AllHotels";
+import Hotels from "./Hotels";
 import {
   Switch,
   Route
@@ -33,14 +33,23 @@ function App() {
     <div>
       <Header />
       <Switch>
-        <Route path="/hotels">
-          <AllHotels/>
-        </Route>
         {!loggedIn ? (
           <div>
             <Route path="/login">
               <LogIn login={login} />
             </Route>
+            <Route path="/hotels">
+              <Hotels />
+            </Route>
+            <Route exact path="/">
+              <LogIn login={login} />
+              <p>{error}</p>
+              <h4>Hello, Welcome to the number 1 hotel booking site</h4>
+              <p>Here you see already created users, feel free to use <br />
+
+              </p>
+            </Route>
+
           </div>
         ) : (
             <div>
@@ -59,6 +68,9 @@ function App() {
                     )}
                 </Route>
               </div>
+              <Route path="/hotels">
+                <Hotels />
+              </Route>
               <div>
                 <Route path="/admin">
                   {facade.getRole() === "admin" ? (
