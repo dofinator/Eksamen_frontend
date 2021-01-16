@@ -20,12 +20,15 @@ function LogIn({ login }) {
 
   return (
     <div>
-      <h2>Login</h2>
+
+      <h1>Login</h1>
       <form onChange={onChange}>
         <input placeholder="User Name" id="username" />
         <input placeholder="Password" id="password" />
         <button onClick={performLogin}>Login</button>
       </form>
+
+
     </div>
   );
 }
@@ -45,4 +48,4 @@ function LoggedIn() {
 }
 
 export default LogIn;
-export  {LoggedIn};
+export { LoggedIn };

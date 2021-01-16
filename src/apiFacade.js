@@ -49,12 +49,23 @@ function apiFacade() {
     return role;
   };
 
+  const getUserName = () => {
+    let myToken = getToken();
+    let tokenData = myToken.split(".")[1];
+    let decoedeJsonData = window.atob(tokenData);
+    let decodedJwtData = JSON.parse(decoedeJsonData);
+    let username = decodedJwtData.username;
+    console.log(username);
+
+    return username;
+  };
+
   const fetchData = () => {
     const options = makeOptions("GET", true); //True add's the token
 
     let role = getRole();
 
-    return fetch(URL + "/api/info/" + role, options).then(handleHttpErrors);
+    return fetch(URL + "/api/users/" + role, options).then(handleHttpErrors);
   };
 
   const fetchHotels = () => {
@@ -67,6 +78,11 @@ function apiFacade() {
     const options = makeOptions("GET");
     return fetch(URL + "/api/users/hotel/" + id, options).then(handleHttpErrors);
   };
+
+  const bookHotel = (booking, id) => {
+    const options = makeOptions("PUT",true, booking);
+    return fetch(URL + "/api/users/bookhotel/" + id, options).then(handleHttpErrors);
+  }
 
   const makeOptions = (method, addToken, body) => {
     var opts = {
@@ -86,6 +102,8 @@ function apiFacade() {
   };
 
   return {
+    bookHotel,
+    getUserName,
     fetchHotel,
     fetchHotels,
     makeOptions,
